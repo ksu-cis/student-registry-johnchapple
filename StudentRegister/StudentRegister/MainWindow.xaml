@@ -8,8 +8,35 @@
         Title="MainWindow" Height="450" Width="800">
 
     <DockPanel>
-        <ListBox DockPanel.Dock="Right" Name="StudentList"/>
-        <ContentControl Name="SelectedStudent" />
+        <Button Click="AddGrade" DockPanel.Dock="Bottom">Add Grade</Button>
+        <ListBox DockPanel.Dock="Right" Name="StudentList" IsSynchronizedWithCurrentItem="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Last}"></TextBlock>
+                        <TextBlock Text=", "/>
+                        <TextBlock Text="{Binding Path=First}" ></TextBlock>
+                        <TextBlock Text="{Binding Path=GPA, StringFormat=N2}"></TextBlock>
+                        </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ContentControl Name="SelectedStudent">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="100" Text="First Name:"/>
+                            <TextBox Width="200" Text="{Binding Path=First}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="100" Text="Last Name:"/>
+                            <TextBox Width="200" Text="{Binding Path=Last}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
     </DockPanel>
     
 </Window>
